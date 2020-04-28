@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.sana.apptouchunityapp"
+    android:installLocation="preferExternal"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="16"
+        android:targetSdkVersion="29" />
+
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:smallScreens="true"
+        android:xlargeScreens="true" />
+
+    <uses-feature android:glEsVersion="0x00020000" />
+    <uses-feature
+        android:name="android.hardware.touchscreen"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.touchscreen.multitouch"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.touchscreen.multitouch.distinct"
+        android:required="false" />
+
+	<!-- SDK required permission declaration Start-->
+	<!-- Logs and cache data records -->
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+	<!-- Clear cache -->
+	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+	<!-- Obtain network status -->
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<!-- Obtain the MAC address as one of the mobile phone identifiers -->
+	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+	<!-- The SDK needs to call related network APIs -->
+	<uses-permission android:name="android.permission.INTERNET" />
+	<!-- SMS permission set -->
+	<uses-permission android:name="android.permission.READ_SMS" />
+	<uses-permission android:name="android.permission.RECEIVE_SMS" />
+	<uses-permission android:name="android.permission.SEND_SMS" />
+	<uses-permission android:name="android.permission.WRITE_SMS" />
+	<!-- Kill Processes -->
+	<uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
+	<!-- Allow the program to obtain the currently or previously running app -->
+	<uses-permission android:name="android.permission.GET_TASKS" />
+	<!-- Permissions required for opening the payment page, displayed in a pop-up window -->
+	<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+	<!-- Obtain mobile phone information, including the phone number, IMSI, IMEI, ICCID, and carrier, used for displaying default values on the payment page and determining the payment method  -->
+	<uses-permission android:name="android.permission.READ_PHONE_STATE" />
+	<!-- SDK required permission declaration End-->
+
+    <application
+        android:banner="@drawable/app_banner"
+        android:icon="@drawable/app_icon"
+        android:isGame="true"
+        android:label="@string/app_name"
+        android:theme="@style/UnityThemeSelector" >
+        <activity
+            android:name="com.unity3d.player.UnityPlayerActivity"
+            android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale|layoutDirection"
+            android:hardwareAccelerated="false"
+            android:label="@string/app_name"
+            android:launchMode="singleTask"
+            android:screenOrientation="fullSensor" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
+            </intent-filter>
+
+            <meta-data
+                android:name="unityplayer.UnityActivity"
+                android:value="true" />
+        </activity>
+		
+		<activity
+            android:configChanges="keyboard|keyboardHidden|navigation|orientation|screenSize"
+            android:exported="false"
+            android:name="com.odin.framework.proxy.ProxyActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"
+            android:windowSoftInputMode="adjustPan"/>
+		
+        <meta-data
+            android:name="unity.build-id"
+            android:value="66ef70bb-c63e-4698-8c62-7e82874e64d3" />
+        <meta-data
+            android:name="unity.splash-mode"
+            android:value="0" />
+        <meta-data
+            android:name="unity.splash-enable"
+            android:value="True" />
+        <meta-data
+            android:name="android.max_aspect"
+            android:value="2.1" />
+		
+		<service android:exported="false" android:name="com.odin.framework.proxy.ProxyService1"/>
+		<service android:exported="false" android:name="com.odin.framework.proxy.ProxyService2"/>
+		<service android:exported="false" android:name="com.odin.framework.proxy.ProxyService3"/>
+		<service android:exported="false" android:name="com.odin.framework.proxy.ProxyService4"/>
+		<service android:exported="false" android:name="com.odin.framework.proxy.ProxyService5"/>
+		<service android:exported="false" android:name="com.odin.framework.proxy.ProxyService6"/>
+		
+		<!-- Grant the URI temporary access permission -->
+		<provider
+			android:name="android.support.v4.content.FileProvider"
+			android:authorities="Package name (com.xx.xx).fileProvider"
+			android:exported="false"
+			android:grantUriPermissions="true" >
+			<meta-data
+				android:name="android.support.FILE_PROVIDER_PATHS"
+				android:resource="@xml/file_paths" />
+		</provider>
+    </application>
+
+</manifest>
